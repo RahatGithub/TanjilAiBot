@@ -79,8 +79,37 @@ function clearChat(index) {
 }
 
 // Function to render chat history for the active chat
+// function renderChatHistory() {
+//     chatContainer.innerHTML = ''; // Clear existing chat
+//     const activeChat = chatHistory[activeChatIndex];
+//     activeChat?.messages?.forEach(chat => {
+//         const html = chat.sender === "user"
+//             ? `<img src="user.jpg" alt="" id="userImage" width="7%">
+//                 <div class="user-chat-area">
+//                     ${chat.message}
+//                     ${chat.file ? `<img src="data:${chat.file.mime_type};base64,${chat.file.data}" class="choose-img" />` : ""}
+//                 </div>`
+//             : `<img src="ai.png" alt="" id="aiImage" width="10%">
+//                 <div class="ai-chat-area">${chat.message}</div>`;
+//         const chatBox = createChatBox(html, chat.sender === "user" ? "user-chat-box" : "ai-chat-box");
+//         chatContainer.appendChild(chatBox);
+//     });
+//     chatContainer.scrollTo({ top: chatContainer.scrollHeight, behavior: "smooth" });
+// }
+// Function to render chat history for the active chat
 function renderChatHistory() {
     chatContainer.innerHTML = ''; // Clear existing chat
+
+    // Check if chatHistory is empty
+    if (chatHistory.length === 0) {
+        // Show welcome message when no chats exist
+        const welcomeMessage = document.createElement('div');
+        welcomeMessage.classList.add('welcome-message');
+        welcomeMessage.innerHTML = "<h1>Hey! What's up?</h1>Artificial intelligence chatbots are revolutionizing the way we interact with technology. These intelligent assistants, powered by advanced algorithms, can understand and respond to human language, making conversations seamless and efficient. From answering queries to providing personalized recommendations, AI chatbots are transforming customer service, e-commerce, and countless other industries. 2  As they continue to evolve, we can expect even more sophisticated and helpful AI companions in the future.";
+        chatContainer.appendChild(welcomeMessage);
+        return; // Exit function early to prevent any other rendering
+    }
+
     const activeChat = chatHistory[activeChatIndex];
     activeChat?.messages?.forEach(chat => {
         const html = chat.sender === "user"
@@ -96,6 +125,7 @@ function renderChatHistory() {
     });
     chatContainer.scrollTo({ top: chatContainer.scrollHeight, behavior: "smooth" });
 }
+
 
 // Function to create a chat box for both AI and User
 function createChatBox(html, classes) {

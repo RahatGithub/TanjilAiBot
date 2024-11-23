@@ -9,6 +9,15 @@ body {
     height: 100vh;
     display: flex; /* Flex layout for sidebar and main content */
 }
+.welcome-message {
+    padding: 20px;
+    color: #ecf0f1;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 28px;
+    margin: 60px;
+    line-height: 1.6; 
+}
 .sidebar {
     width: 300px;
     background-color: #2c3e50;
