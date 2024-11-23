@@ -1,0 +1,227 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex; /* Flex layout for sidebar and main content */
+}
+.sidebar {
+    width: 250px;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+}
+.sidebar button {
+    background: #34495e;
+    color: #ecf0f1;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: left;
+    transition: background 0.3s;
+}
+.sidebar button:hover {
+    background: #1abc9c;
+}
+.sidebar .active {
+    background: #1abc9c;
+}
+.tabs button {
+    margin-top: 10px;
+}
+
+.main-content {
+    flex: 1; /* Fills the space remaining after the sidebar */
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-container {
+    width: 100%;
+    height: 80%;
+    background-color: rgb(45, 52, 59);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 20px;
+    overflow: auto;
+}
+.user-chat-box {
+    width: 60%;
+    position: relative;
+    left: 40%;
+}
+.user-chat-area {
+    width: 90%;
+    padding: 20px;
+    color: rgb(255, 255, 255, 0.639);
+    background-color: black;
+    border-radius: 40px 0 40px 40px;
+    box-shadow: 2px 2px 10px black;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+.choose-img {
+    width: 30%;
+}
+#userImage {
+    position: absolute;
+    right: 0;
+    border-radius: 50%;
+    filter: drop-shadow(2px 2px 10px black);
+}
+
+.ai-chat-box {
+    width: 60%;
+    position: relative;
+}
+.ai-chat-area {
+    width: 90%;
+    padding: 20px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.361);
+    position: relative;
+    left: 10%;
+    border-radius: 0px 40px 40px 40px;
+    box-shadow: 2px 2px 10px black;
+}
+#aiImage {
+    position: absolute;
+    left: 0;
+    filter: drop-shadow(2px 2px 10px black);
+}
+.prompt-area {
+    width: 100%;
+    height: 20%;
+    background-color: rgb(45, 52, 59);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.prompt-area input {
+    width: 50%;
+    height: 80px;
+    background-color: black;
+    outline: none;
+    border: none;
+    border-radius: 50px;
+    padding: 20px;
+    color: white;
+    font-size: 20px;
+}
+.prompt-area button {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: black;
+    border: none;
+    box-shadow: 2px 2px 10px black;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+.prompt-area button:hover {
+    background-color: rgb(0, 0, 0, 0.338);
+}
+.load {
+    filter: drop-shadow(2px 2px 10px black);
+}
+.prompt-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+#image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 600px) {
+    .sidebar {
+        width: 200px;
+    }
+    .ai-chat-box {
+        width: 80%;
+    }
+    .user-chat-box {
+        width: 80%;
+        left: 20%;
+    }
+    .chat-container {
+        font-size: 16px;
+    }
+    .ai-chat-area {
+        border-radius: 8px 20px 20px 20px;
+    }
+    .user-chat-area {
+        border-radius: 20px 5px 20px 20px;
+    }
+    .chat-container {
+        height: 85%;
+    }
+    .prompt-area {
+        height: 15%;
+    }
+    .prompt-area input {
+        border-radius: 30px;
+        height: auto;
+        font-size: 16px;
+    }
+    .prompt-area button {
+        width: 55px;
+        height: 55px;
+    }
+
+    /* Add styles for the current chat name display */
+    .current-chat-name {
+        background-color: #34495e;
+        color: #ecf0f1;
+        text-align: center;
+        padding: 10px 0;
+        font-size: 18px;
+        font-weight: bold;
+        text-transform: capitalize;
+    }
+
+    /* Adjustments for tabs in the sidebar */
+    .tabs {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .tabs .tab {
+        background: #34495e;
+        color: #ecf0f1;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        text-align: left;
+        transition: background 0.3s;
+    }
+
+    .tabs .tab:hover {
+        background: #1abc9c;
+    }
+
+    .tabs .tab.active {
+        background: #1abc9c;
+    }
+
+}
+

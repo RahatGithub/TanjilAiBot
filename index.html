@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanjil ChatBot</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <button id="new-chat">New Chat</button>
+        <div class="tabs" id="chat-tabs"></div>
+    </div>
+
+    <!-- Main Chat Section -->
+    <div class="main-content">
+        <div class="current-chat-name" id="current-chat-name">No Chat Selected</div>
+        <div class="chat-container"></div>
+        <div class="prompt-area">
+            <input type="text" id="prompt" placeholder="Message...">
+            <button id="image">
+                <img src="img.svg" alt="">
+                <input type="file" accept="images/*" hidden>
+            </button>
+            <button id="submit"><img src="submit.svg" alt=""></button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
