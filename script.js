@@ -38,8 +38,20 @@ function renderChatTabs() {
         tabButton.classList.add("tab");
         if (index == activeChatIndex) tabButton.classList.add("active");
         tabButton.dataset.index = index;
+
+        // Create the "clear" button and append it to each tab
+        const clearButton = document.createElement("button");
+        clearButton.classList.add("clear-btn");
+        clearButton.textContent = "Clear";
+        clearButton.addEventListener("click", (e) => {
+            e.stopPropagation(); // Prevent the tab click event
+            clearChat(index);
+        });
+
+        tabButton.appendChild(clearButton);
         tabsContainer.appendChild(tabButton);
     });
+
     tabsContainer.querySelectorAll(".tab").forEach(tab => {
         tab.addEventListener("click", (e) => {
             activeChatIndex = e.target.dataset.index;
@@ -47,6 +59,23 @@ function renderChatTabs() {
             renderChatTabs();
         });
     });
+}
+
+// Function to clear chat history and reload page
+function clearChat(index) {
+    // Remove the selected chat from history and tabs
+    chatTabs.splice(index, 1);
+    chatHistory.splice(index, 1);
+
+    // Reset active chat index to 0 or adjust if the last tab was deleted
+    activeChatIndex = 0;
+    if (index < activeChatIndex) activeChatIndex--;
+
+    // Save the updated chat history and tabs to localStorage
+    saveChatToLocalStorage();
+
+    // Reload the page to reflect changes
+    location.reload();
 }
 
 // Function to render chat history for the active chat
@@ -88,6 +117,7 @@ document.getElementById("new-chat").addEventListener("click", () => {
         renderChatHistory();
     }
 });
+
 
 // Handle chat response from user
 function handleChatResponse() {
@@ -136,6 +166,7 @@ function handleChatResponse() {
     }, 600);
 }
 
+
 // Handle AI response from the API
 async function generateResponse(aiChatBox) {
     let text = aiChatBox.querySelector(".ai-chat-area");
@@ -180,28 +211,6 @@ submitBtn.addEventListener("click", () => {
     handleChatResponse();
 });
 
-imageInput.addEventListener("change", () => {
-    const file = imageInput.files[0];
-    if (!file) return;
-    let reader = new FileReader();
-    reader.onload = (e) => {
-        let base64String = e.target.result.split(",")[1];
-        user.file = {
-            mime_type: file.type,
-            data: base64String
-        };
-        image.src = `data:${user.file.mime_type};base64,${user.file.data}`;
-        image.classList.add("prompt-img");
-    };
-    reader.readAsDataURL(file);
-});
-
-imageBtn.addEventListener("click", () => {
-    imageBtn.querySelector("input").click();
-});
-
-// Load chat tabs and history on page load
-window.addEventListener("DOMContentLoaded", () => {
-    renderChatTabs();
-    renderChatHistory();
-});
+// Initialize chat tabs and history
+renderChatTabs();
+renderChatHistory();
