@@ -78,24 +78,7 @@ function clearChat(index) {
     location.reload();
 }
 
-// Function to render chat history for the active chat
-// function renderChatHistory() {
-//     chatContainer.innerHTML = ''; // Clear existing chat
-//     const activeChat = chatHistory[activeChatIndex];
-//     activeChat?.messages?.forEach(chat => {
-//         const html = chat.sender === "user"
-//             ? `<img src="user.jpg" alt="" id="userImage" width="7%">
-//                 <div class="user-chat-area">
-//                     ${chat.message}
-//                     ${chat.file ? `<img src="data:${chat.file.mime_type};base64,${chat.file.data}" class="choose-img" />` : ""}
-//                 </div>`
-//             : `<img src="ai.png" alt="" id="aiImage" width="10%">
-//                 <div class="ai-chat-area">${chat.message}</div>`;
-//         const chatBox = createChatBox(html, chat.sender === "user" ? "user-chat-box" : "ai-chat-box");
-//         chatContainer.appendChild(chatBox);
-//     });
-//     chatContainer.scrollTo({ top: chatContainer.scrollHeight, behavior: "smooth" });
-// }
+
 // Function to render chat history for the active chat
 function renderChatHistory() {
     chatContainer.innerHTML = ''; // Clear existing chat
